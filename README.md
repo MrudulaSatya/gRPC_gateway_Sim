@@ -1,10 +1,15 @@
 # Embedded Gateway Simulator using gRPC & Protobuf
 
+![Python](https://img.shields.io/badge/python-3.11-blue)
+![gRPC](https://img.shields.io/badge/gRPC-enabled-green)
+![Protobuf](https://img.shields.io/badge/Protocol%20Buffers-v3-blueviolet)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+
 This project simulates a realistic embedded system gateway using Python, gRPC, and Protocol Buffers. It models how a mobile/cloud application communicates with a connected embedded product through a gateway — a pattern commonly used in IoT systems (e.g., smart homes, industrial sensors).
 
 ---
 
-## 🔧 Features
+## Features
 
 - **gRPC Server** simulating an embedded gateway
 - **gRPC Client** simulating a cloud or mobile app
@@ -19,7 +24,25 @@ This project simulates a realistic embedded system gateway using Python, gRPC, a
 
 ---
 
-## 📂 Folder Structure
+## Architecture
+
+```
+        +---------------------+
+        |   gRPC Client (Pi)  |     ← Simulates mobile/cloud
+        +---------------------+
+                  │
+                  ▼
+        +---------------------+
+        |  gRPC Server (PC)   |     ← Simulates embedded gateway
+        |  (Logs + Streaming) |
+        +---------------------+
+                  │
+                  ▼
+        [ Protobuf Binary (UART) ]
+```
+---
+
+## Folder Structure
 
 ```
 .
@@ -38,16 +61,16 @@ This project simulates a realistic embedded system gateway using Python, gRPC, a
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
-### 🔧 Install Dependencies
+### Install Dependencies
 ```bash
 python -m venv venv
 source venv/bin/activate
 pip install grpcio grpcio-tools
 ```
 
-### 🛠 Compile Protobuf
+### Compile Protobuf
 ```bash
 python -m grpc_tools.protoc \
   -I protos \
@@ -69,7 +92,7 @@ python client.py
 
 ---
 
-## 🧠 Real-World Relevance
+## Real-World Relevance
 This project mimics the architecture used in embedded companies like Google Nest, Tesla, and others:
 - Binary-encoded telemetry via Protobuf
 - Edge-device to cloud communication via gRPC
@@ -82,10 +105,10 @@ Even if the physical product uses UART and REST, this simulation provides:
 
 ---
 
-## 📜 License
+## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 💬 Questions or Ideas?
+## Questions or Ideas?
 Feel free to fork, open issues, or submit pull requests!
