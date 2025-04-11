@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package gateway;
+
+// Message to send configuration details
+message Config {
+  string device_id = 1;
+  int32 sample_rate = 2;
+  bool enable_wifi = 3;
+}
+
+// Message to send light command
+message LightCommand {
+  string device_id = 1;
+  bool turn_on = 2;
+}
+
+// Empty message (used for GetStatus)
+message Empty {}
+
+// Response message for general status
+message Status {
+  bool success = 1;
+  string message = 2;
+}
+
+// Device status message
+message DeviceStatus {
+  string device_id = 1;
+  string uptime = 2;
+  bool light_on = 3;
+  bool wifi_connected = 4;
+}
+
+// Message for telemetry data
+message TelemetryData {
+    string device_id = 1;
+    int32 temperature = 2;
+    int32 humidity = 3;
+    int64 timestamp = 4;
+  }
+
+// gRPC Service definition
+service Gateway {
+  rpc SetConfig(Config) returns (Status);
+  rpc GetStatus(Empty) returns (DeviceStatus);
+  rpc TurnOnLight(LightCommand) returns (Status);
+  rpc StreamTelemetry(Empty) returns (stream TelemetryData);
+}
