@@ -19,8 +19,7 @@ This project simulates a realistic embedded system gateway using Python, gRPC, a
   - Controlling hardware (e.g., light on/off)
   - Getting status
   - Streaming telemetry (temperature, humidity)
-- Optional conversion to serialized binary data (e.g., for UART transmission)
-- Logging to file for debugging and replay
+- Conversion to serialized binary data (e.g., for UART transmission)
 
 ---
 
