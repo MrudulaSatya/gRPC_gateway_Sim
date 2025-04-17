@@ -89,20 +89,6 @@ In a new terminal (while server is running):
 ```bash
 python client.py
 ```
-
----
-
-## Real-World Relevance
-This project mimics the architecture used in embedded companies like Google Nest, Tesla, and others:
-- Binary-encoded telemetry via Protobuf
-- Edge-device to cloud communication via gRPC
-- Test harnesses using simulated gateways
-
-Even if the physical product uses UART and REST, this simulation provides:
-- Automation
-- Testable behavior
-- Reusable tooling
-
 ---
 
 ## License
